@@ -13,8 +13,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var profileImage: UIImageView!
     
+    @IBOutlet weak var seibetsuKame: UIButton!
+    @IBOutlet weak var seibetsuUsagi: UIButton!
+    @IBOutlet weak var seibetsuHuman: UIButton!
     //写真を撮る場合またはアルバムから取得かどうかのフラグ
     var isTakePhoto = false
+    
+    enum buttonTag: Int {
+        case kameButton = 0
+        case usagiButton = 1
+        case humanButton = 2
+    }
     
     @IBAction func profileTap(_ sender: Any) {
 //        let usagiImage = UIImage(named: "usagi")
@@ -38,9 +47,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    @IBAction func seibetsuTap(_ sender: Any) {
+
+        if let button = sender as? UIButton {
+            actionBorderColor(button: self.seibetsuKame, color: UIColor.gray)
+            actionBorderColor(button: self.seibetsuUsagi, color: UIColor.gray)
+            actionBorderColor(button: self.seibetsuHuman, color: UIColor.gray)
+            
+            if let tag = buttonTag(rawValue: button.tag) {
+                switch tag {
+                case .kameButton:actionBorderColor(button:self.seibetsuKame, color: UIColor.blue)
+                case .usagiButton:actionBorderColor(button: self.seibetsuUsagi, color: UIColor.blue)
+                    
+                case .humanButton:
+                    actionBorderColor(button: self.seibetsuHuman, color: UIColor.blue)
+                }
+            }
+    
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.seibetsuKame.layer.cornerRadius = self.seibetsuKame.frame.size.height/2
+        self.seibetsuKame.clipsToBounds = true
+        self.seibetsuKame.layer.masksToBounds = true
+        actionBorderColor(button: self.seibetsuKame, color: UIColor.gray)
+        
+        self.seibetsuUsagi.layer.cornerRadius = self.seibetsuUsagi.frame.size.height/2
+        self.seibetsuUsagi.clipsToBounds = true
+        self.seibetsuUsagi.layer.masksToBounds = true
+        actionBorderColor(button: self.seibetsuUsagi, color: UIColor.gray)
+        
+        self.seibetsuHuman.layer.cornerRadius = self.seibetsuHuman.frame.size.height/2
+        self.seibetsuHuman.clipsToBounds = true
+        self.seibetsuHuman.layer.masksToBounds = true
+        actionBorderColor(button: self.seibetsuHuman, color: UIColor.gray)
 
     }
     
@@ -112,6 +155,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                      didFinishSavingWithError error: NSError!,
                      contextInfo: UnsafeMutableRawPointer) {
     
+    }
+    
+    //選択された性別のボタンの枠線を色付けする
+    func actionBorderColor(button: UIButton,color:UIColor){
+        button.layer.borderColor = color.cgColor
+        button.layer.borderWidth = 2
+        
     }
 
 

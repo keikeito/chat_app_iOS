@@ -59,12 +59,46 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="性別" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGu-pc-chb">
+                                <rect key="frame" x="0.0" y="259" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ul-RS-DH5">
+                                <rect key="frame" x="122" y="249" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="usagi"/>
+                                <connections>
+                                    <action selector="seibetsuTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bhN-cg-y6c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qys-4f-5O3">
+                                <rect key="frame" x="55" y="249" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="test"/>
+                                <connections>
+                                    <action selector="seibetsuTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pa2-ek-IYC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMv-3D-PRb">
+                                <rect key="frame" x="195" y="249" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="human" backgroundImage="human"/>
+                                <connections>
+                                    <action selector="seibetsuTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cgX-6p-kHr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="profileImage" destination="MVO-va-ByE" id="lIf-Hg-WQA"/>
+                        <outlet property="seibetsuHuman" destination="EMv-3D-PRb" id="dVN-W0-i7p"/>
+                        <outlet property="seibetsuKame" destination="qys-4f-5O3" id="GXf-Cv-iB7"/>
+                        <outlet property="seibetsuUsagi" destination="9ul-RS-DH5" id="nHK-UQ-gQw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -73,6 +107,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="human" width="225" height="225"/>
         <image name="test" width="225" height="225"/>
+        <image name="usagi" width="225" height="225"/>
     </resources>
 </document>
