@@ -9,13 +9,20 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDelegate, UIPickerViewDataSource{
     
     @IBOutlet weak var profileImage: UIImageView!
     
     @IBOutlet weak var seibetsuKame: UIButton!
     @IBOutlet weak var seibetsuUsagi: UIButton!
     @IBOutlet weak var seibetsuHuman: UIButton!
+    @IBOutlet weak var ageTextFeild: UITextField!
+    
+    var pickerView: UIPickerView = UIPickerView()
+    let ageList = ["設定しない", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89"]
+    
+    let placeList = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県",
+        "熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
     //写真を撮る場合またはアルバムから取得かどうかのフラグ
     var isTakePhoto = false
     
@@ -84,7 +91,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.seibetsuHuman.clipsToBounds = true
         self.seibetsuHuman.layer.masksToBounds = true
         actionBorderColor(button: self.seibetsuHuman, color: UIColor.gray)
-
+        
+        
+        //ageTextFeildのUIPickerView処理
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.showsSelectionIndicator = true
+        
+        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(ViewController.done))
+        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(ViewController.cancel))
+        toolbar.setItems([cancelItem, doneItem], animated: true)
+        
+        self.ageTextFeild.inputView = pickerView
+        self.ageTextFeild.inputAccessoryView = toolbar
+        
     }
     
     func selectFromAlbum(_ msg:String) {
@@ -162,6 +183,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         button.layer.borderColor = color.cgColor
         button.layer.borderWidth = 2
         
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return ageList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return ageList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.ageTextFeild.text = ageList[row]
+    }
+    
+    @objc func cancel() {
+        self.ageTextFeild.text = ""
+        self.ageTextFeild.endEditing(true)
+    }
+    
+    @objc func done() {
+        self.ageTextFeild.endEditing(true)
+    }
+    
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 
