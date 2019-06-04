@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDelegate, UIPickerViewDataSource{
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDelegate, UIPickerViewDataSource,UITextViewDelegate{
     
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -17,6 +17,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var seibetsuUsagi: UIButton!
     @IBOutlet weak var seibetsuHuman: UIButton!
     @IBOutlet weak var ageTextFeild: UITextField!
+    
+    @IBOutlet weak var selfIntroTextView: UITextView!
+    var editingField:UITextField?
+    @IBOutlet weak var myScrolView: UIScrollView!
+    
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var selfIntroTextViewPlaceHolder: UILabel!
+    //重なっている高さ
+    var overlap:CGFloat = 0.0
+    var lastOffsetY:CGFloat = 0.0
     
     var pickerView: UIPickerView = UIPickerView()
     let ageList = ["設定しない", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89"]
@@ -74,6 +84,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        //スクロール領域の設定
+        self.myScrolView.contentSize = CGSize(width:0, height:1000)
         
         self.seibetsuKame.layer.cornerRadius = self.seibetsuKame.frame.size.height/2
         self.seibetsuKame.clipsToBounds = true
@@ -103,6 +115,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         self.ageTextFeild.inputView = pickerView
         self.ageTextFeild.inputAccessoryView = toolbar
+        
+        selfIntroTextView.delegate = self
+        
+        
+        //通知センター
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(ViewController.keyboradChangeFrame(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
+        
+        notification.addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        notification.addObserver(self, selector: #selector(ViewController.keyboardDidHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         
     }
     
@@ -217,6 +240,55 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func textViewDidBeginEditing(_ textView: UITextView){
 
+    }
+    
+    
+    func textViewDidEndEditing(_ textView: UITextView){
+
+    }
+    
+    @objc func keyboradChangeFrame(_ notification: Notification) {
+        selfIntroTextViewPlaceHolder.isHidden = true
+        let userInfo = (notification as Notification).userInfo!
+        let keybordFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+
+        print("selfIntroTextView.maxY")
+        print(self.selfIntroTextView.frame.maxY)
+        print("keybordFrame.minY")
+        print(keybordFrame.minY)
+        
+        let fldFrame = view.convert(self.selfIntroTextView.frame,from: contentView)
+        print("fldFrame.maxY")
+        print(fldFrame.maxY)
+        var overlap = fldFrame.maxY - keybordFrame.minY + 5
+        print("overlap")
+        print(overlap)
+        print("--------------")
+        if overlap>0 {
+            overlap += myScrolView.contentOffset.y
+            myScrolView.setContentOffset(CGPoint(x: 0, y:overlap), animated: true)
+        }
+        
+        //TextViewが空だったらLabel表示
+        if(self.selfIntroTextView.text.isEmpty){
+            selfIntroTextViewPlaceHolder.isHidden = false
+        }
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        lastOffsetY = myScrolView.contentOffset.y
+    }
+    
+    @objc func keyboardDidHide(_ notification: Notification) {
+        myScrolView.setContentOffset(CGPoint(x: 0,y: lastOffsetY),animated: true)
+    }
+
+    @IBAction func tapView(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
 }
 
