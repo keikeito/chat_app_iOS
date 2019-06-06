@@ -1,32 +1,35 @@
 //
-//  test.swift
+//  AgeTextField.swift
 //  register_test
 //
-//  Created by NAKAYAMA KEITO on 2019/06/03.
+//  Created by NAKAYAMA KEITO on 2019/06/06.
 //  Copyright © 2019 NAKAYAMA KEITO. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class PlaceTextField: UITextField ,UIPickerViewDelegate, UIPickerViewDataSource{
+
+class AgeTextField: UITextField ,UIPickerViewDelegate, UIPickerViewDataSource {
+    
     var pickerView: UIPickerView = UIPickerView()
     
-    let placeList = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
+    let ageList = ["設定しない", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89"]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return placeList.count
+        return ageList.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return placeList[row]
+        return ageList[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.text = placeList[row]
+        self.text = ageList[row]
     }
     
     @objc func cancel() {
@@ -50,8 +53,8 @@ class PlaceTextField: UITextField ,UIPickerViewDelegate, UIPickerViewDataSource{
         pickerView.showsSelectionIndicator = true
         
         let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(PlaceTextField.done))
-        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(PlaceTextField.cancel))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AgeTextField.done))
+        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(AgeTextField.cancel))
         toolbar.setItems([cancelItem, doneItem], animated: true)
         
         self.inputView = pickerView
