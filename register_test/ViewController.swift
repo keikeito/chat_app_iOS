@@ -90,12 +90,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         selfIntroTextView.delegate = self
         
         //通知センター
-        let notification = NotificationCenter.default
-        notification.addObserver(self, selector: #selector(ViewController.keyboradChangeFrame(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
-        
-        notification.addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        notification.addObserver(self, selector: #selector(ViewController.keyboardDidHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+        self.setNotificationCenter()
         
     }
     
@@ -247,6 +242,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.seibetsuHuman.clipsToBounds = true
         self.seibetsuHuman.layer.masksToBounds = true
         actionBorderColor(button: self.seibetsuHuman, color: UIColor.gray)
+    }
+    
+    //通知設定
+    func setNotificationCenter(){
+        //通知センター
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(ViewController.keyboradChangeFrame(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
+        
+        notification.addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        notification.addObserver(self, selector: #selector(ViewController.keyboardDidHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
 }
 
