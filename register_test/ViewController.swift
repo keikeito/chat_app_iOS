@@ -84,24 +84,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //スクロール領域の設定
         self.myScrolView.contentSize = CGSize(width:0, height:1000)
         
-        self.seibetsuKame.layer.cornerRadius = self.seibetsuKame.frame.size.height/2
-        self.seibetsuKame.clipsToBounds = true
-        self.seibetsuKame.layer.masksToBounds = true
-        actionBorderColor(button: self.seibetsuKame, color: UIColor.gray)
-        
-        self.seibetsuUsagi.layer.cornerRadius = self.seibetsuUsagi.frame.size.height/2
-        self.seibetsuUsagi.clipsToBounds = true
-        self.seibetsuUsagi.layer.masksToBounds = true
-        actionBorderColor(button: self.seibetsuUsagi, color: UIColor.gray)
-        
-        self.seibetsuHuman.layer.cornerRadius = self.seibetsuHuman.frame.size.height/2
-        self.seibetsuHuman.clipsToBounds = true
-        self.seibetsuHuman.layer.masksToBounds = true
-        actionBorderColor(button: self.seibetsuHuman, color: UIColor.gray)
-        
+        //性別の初期設定
+        self.seibetsu()
         
         selfIntroTextView.delegate = self
-        
         
         //通知センター
         let notification = NotificationCenter.default
@@ -245,5 +231,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.endEditing(true)
     }
     
+    //性別の初期設定
+    func seibetsu () {
+        self.seibetsuKame.layer.cornerRadius = self.seibetsuKame.frame.size.height/2
+        self.seibetsuKame.clipsToBounds = true
+        self.seibetsuKame.layer.masksToBounds = true
+        actionBorderColor(button: self.seibetsuKame, color: UIColor.gray)
+        
+        self.seibetsuUsagi.layer.cornerRadius = self.seibetsuUsagi.frame.size.height/2
+        self.seibetsuUsagi.clipsToBounds = true
+        self.seibetsuUsagi.layer.masksToBounds = true
+        actionBorderColor(button: self.seibetsuUsagi, color: UIColor.gray)
+        
+        self.seibetsuHuman.layer.cornerRadius = self.seibetsuHuman.frame.size.height/2
+        self.seibetsuHuman.clipsToBounds = true
+        self.seibetsuHuman.layer.masksToBounds = true
+        actionBorderColor(button: self.seibetsuHuman, color: UIColor.gray)
+    }
 }
 
