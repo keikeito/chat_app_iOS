@@ -22,7 +22,21 @@
                                 <rect key="frame" x="0.0" y="29" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="プロフィール" id="tq3-g6-skc"/>
+                                    <navigationItem title="プロフィール" id="tq3-g6-skc">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="kBv-Dr-3rl">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6No-g7-Ily">
+                                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="登録"/>
+                                                <connections>
+                                                    <action selector="registerAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OTo-Y3-ThG"/>
+                                                </connections>
+                                            </button>
+                                            <connections>
+                                                <action selector="registerTap:" destination="BYZ-38-t0r" id="ant-9s-BpZ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEP-at-Wkv">

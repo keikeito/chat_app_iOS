@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		528377A622A8E9DD003923E5 /* AgeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528377A522A8E9DD003923E5 /* AgeTextField.swift */; };
 		52AE4539229FB8D700FD1BDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE4538229FB8D700FD1BDC /* AppDelegate.swift */; };
 		52AE453B229FB8D700FD1BDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE453A229FB8D700FD1BDC /* ViewController.swift */; };
 		52AE453E229FB8D700FD1BDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AE453C229FB8D700FD1BDC /* Main.storyboard */; };
@@ -14,6 +15,9 @@
 		52AE4543229FB8DA00FD1BDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AE4541229FB8DA00FD1BDC /* LaunchScreen.storyboard */; };
 		52AE454E229FB8DA00FD1BDC /* register_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE454D229FB8DA00FD1BDC /* register_testTests.swift */; };
 		52AE4559229FB8DA00FD1BDC /* register_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE4558229FB8DA00FD1BDC /* register_testUITests.swift */; };
+		52C513F922B0F7A200F9CA4F /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C513F822B0F7A200F9CA4F /* HttpClient.swift */; };
+		52C513FB22B13ADE00F9CA4F /* const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C513FA22B13ADE00F9CA4F /* const.swift */; };
+		52F8EF9F22A4375D00909CC3 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F8EF9E22A4375D00909CC3 /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		528377A522A8E9DD003923E5 /* AgeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeTextField.swift; sourceTree = "<group>"; };
 		52AE4535229FB8D700FD1BDC /* register_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = register_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52AE4538229FB8D700FD1BDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52AE453A229FB8D700FD1BDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +52,9 @@
 		52AE4554229FB8DA00FD1BDC /* register_testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = register_testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52AE4558229FB8DA00FD1BDC /* register_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register_testUITests.swift; sourceTree = "<group>"; };
 		52AE455A229FB8DA00FD1BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52C513F822B0F7A200F9CA4F /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		52C513FA22B13ADE00F9CA4F /* const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = const.swift; sourceTree = "<group>"; };
+		52F8EF9E22A4375D00909CC3 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,10 @@
 				52AE453F229FB8DA00FD1BDC /* Assets.xcassets */,
 				52AE4541229FB8DA00FD1BDC /* LaunchScreen.storyboard */,
 				52AE4544229FB8DA00FD1BDC /* Info.plist */,
+				52F8EF9E22A4375D00909CC3 /* TextField.swift */,
+				528377A522A8E9DD003923E5 /* AgeTextField.swift */,
+				52C513F822B0F7A200F9CA4F /* HttpClient.swift */,
+				52C513FA22B13ADE00F9CA4F /* const.swift */,
 			);
 			path = register_test;
 			sourceTree = "<group>";
@@ -256,8 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52C513F922B0F7A200F9CA4F /* HttpClient.swift in Sources */,
 				52AE453B229FB8D700FD1BDC /* ViewController.swift in Sources */,
+				52F8EF9F22A4375D00909CC3 /* TextField.swift in Sources */,
+				52C513FB22B13ADE00F9CA4F /* const.swift in Sources */,
 				52AE4539229FB8D700FD1BDC /* AppDelegate.swift in Sources */,
+				528377A622A8E9DD003923E5 /* AgeTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q2473S99J2;
 				INFOPLIST_FILE = register_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q2473S99J2;
 				INFOPLIST_FILE = register_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -507,6 +525,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q2473S99J2;
 				INFOPLIST_FILE = register_testUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,6 +545,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q2473S99J2;
 				INFOPLIST_FILE = register_testUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

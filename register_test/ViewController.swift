@@ -254,5 +254,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         notification.addObserver(self, selector: #selector(ViewController.keyboardDidHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
+
+
+    @IBAction func registerAction(_ sender: Any) {
+        //構造体からjsonに変換
+        let user = const.user(name: "a", gender: 1, area: "東京")
+        let requestRegsiterPost = const.requestRegsiterPost(user: user)
+        var jsonString: String?
+        do {
+            let encoder = JSONEncoder()
+            let jsonData = try encoder.encode(requestRegsiterPost)
+            jsonString = String(data: jsonData, encoding: .utf8)
+        } catch{
+            print(error)
+        }
+        let httpClient = HttpClient()
+        httpClient.post(url: const.url, body: jsonString!)
+    }
+
+    
 }
 
